@@ -88,7 +88,6 @@ def update_product(products):
     # Tìm sản phẩm (dùng next để tối ưu thay vì duyệt hết list)
     product = next((p for p in products if p['id'] == product_id), None)
     
-    if not found:
     if not product:
         print(f"Không tìm thấy sản phẩm có mã {product_id}")
     
