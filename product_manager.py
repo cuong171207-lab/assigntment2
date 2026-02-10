@@ -113,14 +113,6 @@ def delete_product(products):
     
     found_product = next((p for p in products if p['id'].upper() == input_id), None)
     
-    # Bước 2: Tìm kiếm sản phẩm
-    for p in products:
-        # So sánh mã trong kho (chuyển về in hoa) với mã vừa nhập
-        if p['id'].upper() == input_id:
-            found_product = p
-            break
-    
-    # Bước 3: Xử lý xóa
     if found_product:
         print(f"Đã tìm thấy sản phẩm: {found_product['name']} (Giá: {found_product['price']})")
         confirm = input(f"Bạn chắc chắn muốn xóa không? (y/n): ")
@@ -167,47 +159,6 @@ def display_all_products(products):
     print("-" * 85)
     
     for p in products:
-        # Định dạng giá có dấu phẩy ngăn cách hàng nghìn (VD: 15,000,000)
-        formatted_price = "{:,}".format(p['price'])
-        print(f"{p['id']:<10} | {p['name']:<30} | {p['brand']:<15} | {formatted_price:<12} | {p['quantity']:<5}")
-        # Sử dụng f-string formatting trực tiếp
-        print(f"{p['id']:<10} | {p['name']:<30} | {p['brand']:<15} | {p['price']:<12,} | {p['quantity']:<5}")
-    
-    print("="*85 + "\n")or p in products]
-        print(", ".join(ids))
-
-    return products
-def search_product_by_name(products):
-    """
-    Tìm kiếm sản phẩm theo từ khóa (gần đúng, không phân biệt hoa thường).
-    """
-    print("\n--- TÌM KIẾM SẢN PHẨM ---")
-    keyword = input("Nhập tên sản phẩm cần tìm: ").lower()
-    
-    results = [p for p in products if keyword in p['name'].lower()]
-    
-    if results:
-        print(f"\nTìm thấy {len(results)} kết quả:")
-        display_all_products(results) # Tái sử dụng hàm hiển thị
-    else:
-        print(f"Không tìm thấy sản phẩm nào chứa từ khóa '{keyword}'")
-
-def display_all_products(products):
-    """
-    Hiển thị danh sách sản phẩm dạng bảng.
-    """
-    if not products:
-        print("\n>> Kho hàng trống.")
-        return
-
-    print("\n" + "="*85)
-    print(f"{'MÃ':<10} | {'TÊN SẢN PHẨM':<30} | {'THƯƠNG HIỆU':<15} | {'GIÁ':<12} | {'SL':<5}")
-    print("-" * 85)
-    
-    for p in products:
-        # Định dạng giá có dấu phẩy ngăn cách hàng nghìn (VD: 15,000,000)
-        formatted_price = "{:,}".format(p['price'])
-        print(f"{p['id']:<10} | {p['name']:<30} | {p['brand']:<15} | {formatted_price:<12} | {p['quantity']:<5}")
         # Sử dụng f-string formatting trực tiếp
         print(f"{p['id']:<10} | {p['name']:<30} | {p['brand']:<15} | {p['price']:<12,} | {p['quantity']:<5}")
     
