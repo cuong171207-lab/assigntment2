@@ -90,7 +90,6 @@ def update_product(products):
     
     if not product:
         print(f"Không tìm thấy sản phẩm có mã {product_id}")
-    
     else:
         print(f"Tìm thấy: {product['name']}")
         print("Nhập thông tin mới (nếu không đổi, hãy nhập lại giá trị cũ):")
