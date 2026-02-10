@@ -59,19 +59,6 @@ def add_product(products):
     price = _get_valid_int("Nhập giá sản phẩm (số nguyên): ")
     quantity = _get_valid_int("Nhập số lượng tồn kho (số nguyên): ")
 
-    # Tự động tạo ID: LT + số thứ tự (đơn giản hóa)
-    # Để tránh trùng lặp khi xóa, cách tốt nhất là tìm ID lớn nhất hiện có hoặc dùng uuid.
-    # Nhưng ở mức độ cơ bản, ta dùng độ dài danh sách + 1 (hoặc random).
-    # Ở đây mình dùng logic đếm số lượng hiện tại + 1 cho đơn giản theo yêu cầu.
-    new_id = f"LT{len(products) + 1:02d}" 
-    
-    # Kiểm tra xem ID này đã tồn tại chưa (trường hợp xóa rồi thêm mới có thể trùng)
-    # Logic nâng cao hơn: Tìm số lớn nhất trong các ID hiện có để tăng lên.
-    existing_ids = [p['id'] for p in products]
-    count = len(products) + 1
-    while new_id in existing_ids:
-        count += 1
-        new_id = f"LT{count:02d}"
     # Tự động tạo ID dựa trên ID lớn nhất hiện có để tránh trùng lặp hiệu quả hơn
     max_id = 0
     for p in products:
