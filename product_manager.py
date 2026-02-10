@@ -85,30 +85,6 @@ def update_product(products):
     print("\n--- CẬP NHẬT SẢN PHẨM ---")
     product_id = input("Nhập mã sản phẩm cần sửa (VD: LT01): ").strip()
     
-    found = False
-    for product in products:
-        if product['id'] == product_id:
-            found = True
-            print(f"Tìm thấy: {product['name']}")
-            print("Nhập thông tin mới (nếu không đổi, hãy nhập lại giá trị cũ):")
-            
-            product['name'] = input(f"Tên mới ({product['name']}): ") or product['name']
-            product['brand'] = input(f"Thương hiệu mới ({product['brand']}): ") or product['brand']
-            
-            # Cập nhật giá và số lượng
-            try:
-                p_input = input(f"Giá mới ({product['price']}): ")
-                if p_input:
-                    product['price'] = int(p_input)
-                
-                q_input = input(f"Số lượng mới ({product['quantity']}): ")
-                if q_input:
-                    product['quantity'] = int(q_input)
-            except ValueError:
-                print("Lỗi nhập liệu số! Giữ nguyên giá trị cũ.")
-
-            print("Cập nhật thành công!")
-            break
     # Tìm sản phẩm (dùng next để tối ưu thay vì duyệt hết list)
     product = next((p for p in products if p['id'] == product_id), None)
     
