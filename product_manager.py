@@ -111,7 +111,6 @@ def delete_product(products):
     # .strip() để loại bỏ khoảng trắng thừa nếu lỡ tay ấn dấu cách
     input_id = input("Nhập mã sản phẩm cần xóa (VD: LT01): ").strip().upper()
     
-    found_product = None
     found_product = next((p for p in products if p['id'].upper() == input_id), None)
     
     # Bước 2: Tìm kiếm sản phẩm
