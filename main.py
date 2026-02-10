@@ -1,4 +1,3 @@
-import sys
 import product_manager as pm
 
 def main():
